@@ -31,7 +31,7 @@
               <% if job_application.reviewing?  %>
                 <%= form_tag job_application_path(job_application), remote: true, method: :patch, id: "form_for_#{job_application.id}" do |f| %>
                 <%= hidden_field :job_application, :status, value: Settings.status.cancel %>
-                <%= submit_tag t(".cancel"), class: "btn  btn-sm btn-danger-outline text-danger mt-2" %>
+                <%= submit_tag t(".cancel"), class: "btn  btn-sm btn-danger-outline text-danger mt-2", data: { confirm: "Are you sure you want to cancel this job?"} %>
               <% end %>
             <% end %>
             </div>
