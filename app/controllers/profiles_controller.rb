@@ -13,9 +13,8 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update profile_params
-      flash[:success] = t ".profile_updated"
-    else
-      flash[:error] = t ".profile_update_failed"
+      @profile.file.attach(params[:profile][:file][:image])
+      Profile.all.with_attached_file
     end
 
     respond_to do |format|
